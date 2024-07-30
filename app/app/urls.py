@@ -11,4 +11,5 @@ router.register("menus", MenuViewSet, basename="menu")
 urlpatterns = [
     path("", include(router.urls)),
     path("users/", include("users.urls")),
+    path("votes/", include("votes.urls")),
 ]

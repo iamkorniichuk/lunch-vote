@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "commons",
     "users",
     "restaurants",
+    "votes",
 ]
 
 MIDDLEWARE = [

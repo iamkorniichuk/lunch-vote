@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from drf_writable_nested.serializers import WritableNestedModelSerializer
 
-from commons.date import get_current_vote_date
 from commons.serializers import RepresentativePkRelatedField
 from users.serializers import UserSerializer, User
 
@@ -20,6 +19,16 @@ class MenuSerializer(WritableNestedModelSerializer):
         fields = "__all__"
 
     items = ItemSerializer(many=True)
+    votes = serializers.SerializerMethodField()
+
+    def get_votes(self, obj):
+        return obj.votes.count()
+
+
+class NestedMenuSerializer(MenuSerializer):
+    class Meta:
+        model = Menu
+        exclude = ["id", "restaurant"]
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
@@ -27,16 +36,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = "__all__"
 
-    menu = serializers.SerializerMethodField()
+    menus = NestedMenuSerializer(many=True, read_only=True)
     created_by = RepresentativePkRelatedField(
         queryset=User.objects.all(),
         serializer_class=UserSerializer,
     )
-
-    def get_menu(self, obj):
-        vote_date = get_current_vote_date()
-        menu = obj.menus.filter(date=vote_date.isoformat()).first()
-        if not menu:
-            return None
-        serializer = MenuSerializer(menu)
-        return serializer.data
