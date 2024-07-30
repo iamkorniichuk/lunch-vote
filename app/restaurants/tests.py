@@ -2,7 +2,7 @@ from rest_framework import test, status
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
-from .models import Restaurant
+from .models import Restaurant, Menu
 
 User = get_user_model()
 
@@ -20,6 +20,7 @@ class PermissionTestCase(test.APITestCase):
             name="test-name",
             created_by=cls.owner,
         )
+        Menu.objects.create(restaurant=cls.restaurant)
         cls.restaurant_url = reverse(
             "restaurant-detail",
             kwargs={"pk": cls.restaurant.pk},
