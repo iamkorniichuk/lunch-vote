@@ -1,0 +1,45 @@
+services:
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - web-static:/var/www/static
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PORT=5432
+    env_file:
+      - .env
+    healthcheck:
+      test: "pg_isready"
+      interval: 5s
+      timeout: 15s
+      retries: 3
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - web-static:/var/www/static:ro
+    depends_on:
+      - web
+
+volumes:
+  web-static:
+  web-media:
+  db-data:
