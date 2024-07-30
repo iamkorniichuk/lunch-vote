@@ -5,12 +5,12 @@ from rest_framework_simplejwt.views import (
     TokenBlacklistView,
 )
 
-from .serializers import UserSerializer
+from .serializers import UserSignupSerializer
 from .models import User
 
 
 class UserSignupView(generics.CreateAPIView):
-    serializer_class = UserSerializer
+    serializer_class = UserSignupSerializer
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
 
