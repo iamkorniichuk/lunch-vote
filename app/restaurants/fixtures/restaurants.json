@@ -1,0 +1,64 @@
+[
+  {
+    "model": "restaurants.restaurant",
+    "pk": 1,
+    "fields": { "name": "McDonald's", "created_by": 3 }
+  },
+  {
+    "model": "restaurants.restaurant",
+    "pk": 2,
+    "fields": { "name": "Domino's Pizza", "created_by": 2 }
+  },
+  {
+    "model": "restaurants.menu",
+    "pk": 1,
+    "fields": { "restaurant": 1, "date": "2024-07-31" }
+  },
+  {
+    "model": "restaurants.menu",
+    "pk": 2,
+    "fields": { "restaurant": 2, "date": "2024-07-31" }
+  },
+  {
+    "model": "restaurants.item",
+    "pk": 1,
+    "fields": {
+      "name": "Big Mac",
+      "description": "Ever wondered what's on a Big Mac®? The McDonald's Big Mac® is a 100% beef burger with a taste like no other. The mouthwatering perfection starts with two 100% pure all beef patties and Big Mac® sauce sandwiched between a sesame seed bun. It’s topped off with pickles, crisp shredded lettuce, finely chopped onion, and a slice of American cheese. It contains no artificial flavors, preservatives, or added colors from artificial sources. Our pickle contains an artificial preservative, so skip it if you like.\nThere are 590 calories in a Big Mac® from McDonald's. Pair it with any of our beverages or grab a Big Mac® Combo Meal with our World Famous Fries® and Coca-Cola® or any of your favorite fountain drinks.",
+      "menu": 1
+    }
+  },
+  {
+    "model": "restaurants.item",
+    "pk": 2,
+    "fields": {
+      "name": "Cheeseburger",
+      "description": "Enjoy the cheesy deliciousness of a McDonald’s Cheeseburger! Our simple, classic cheeseburger begins with a 100% pure beef burger patty seasoned with just a pinch of salt and pepper. The McDonald’s Cheeseburger is topped with a tangy pickle, chopped onions, ketchup, mustard, and a slice of melty American cheese. It contains no artificial flavors, preservatives or added colors from artificial sources.* Our pickle contains an artificial preservative, so skip it if you like. For more delicious burger variations explore the McDonald’s burger menu.\nThere are 300 calories in a McDonald’s Cheeseburger.",
+      "menu": 1
+    }
+  },
+  {
+    "model": "restaurants.item",
+    "pk": 3,
+    "fields": { "name": "World Famous Fries", "description": "", "menu": 1 }
+  },
+  {
+    "model": "restaurants.item",
+    "pk": 4,
+    "fields": { "name": "Ribs in Barbecue sauce", "description": "", "menu": 2 }
+  },
+  {
+    "model": "restaurants.item",
+    "pk": 5,
+    "fields": {
+      "name": "Pizza with dried tomatoes and chicken",
+      "description": "",
+      "menu": 2
+    }
+  },
+  {
+    "model": "restaurants.item",
+    "pk": 6,
+    "fields": { "name": "Coca-Cola", "description": "", "menu": 2 }
+  }
+]

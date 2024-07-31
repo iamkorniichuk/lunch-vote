@@ -1,0 +1,1 @@
+[{ "model": "votes.vote", "pk": 1, "fields": { "menu": 1, "user": 2 } }]
